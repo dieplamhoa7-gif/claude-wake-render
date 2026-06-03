@@ -1,0 +1,10 @@
+﻿{
+  "name": "claude-wake-render",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "wake": "node wake.js"
+  },
+  "dependencies": {}
+}

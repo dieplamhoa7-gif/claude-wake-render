@@ -1,0 +1,25 @@
+﻿services:
+  - type: cron
+    name: claude-wake-0500-vn
+    runtime: node
+    schedule: "0 22 * * *"
+    buildCommand: "npm install"
+    startCommand: "node wake.js"
+  - type: cron
+    name: claude-wake-1000-vn
+    runtime: node
+    schedule: "0 3 * * *"
+    buildCommand: "npm install"
+    startCommand: "node wake.js"
+  - type: cron
+    name: claude-wake-1500-vn
+    runtime: node
+    schedule: "0 8 * * *"
+    buildCommand: "npm install"
+    startCommand: "node wake.js"
+  - type: cron
+    name: claude-wake-2000-vn
+    runtime: node
+    schedule: "0 13 * * *"
+    buildCommand: "npm install"
+    startCommand: "node wake.js"
