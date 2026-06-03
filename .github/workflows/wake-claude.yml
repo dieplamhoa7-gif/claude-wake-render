@@ -1,0 +1,33 @@
+﻿name: Wake Claude via 9router
+
+on:
+  schedule:
+    # Asia/Saigon UTC+7
+    - cron: '0 22 * * *' # 05:00 VN
+    - cron: '0 3 * * *'  # 10:00 VN
+    - cron: '0 8 * * *'  # 15:00 VN
+    - cron: '0 13 * * *' # 20:00 VN
+  workflow_dispatch:
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Wake Claude
+        env:
+          WAKE_MODE: 9router
+          NINEROUTER_API_KEY: ${{ secrets.NINEROUTER_API_KEY }}
+          NINEROUTER_BASE_URL: https://api.9router.com/v1
+          NINEROUTER_MODEL: anthropic/claude-sonnet-4-20250514
+          WAKE_MESSAGE: hi
+          MAX_TOKENS: '8'
+        run: node wake.js
