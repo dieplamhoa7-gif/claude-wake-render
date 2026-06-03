@@ -26,8 +26,8 @@ jobs:
         env:
           WAKE_MODE: 9router
           NINEROUTER_API_KEY: ${{ secrets.NINEROUTER_API_KEY }}
-          NINEROUTER_BASE_URL: https://api.9router.com/v1
-          NINEROUTER_MODEL: anthropic/claude-sonnet-4-20250514
+          NINEROUTER_BASE_URL: ${{ vars.NINEROUTER_BASE_URL || 'https://api.9router.com/v1' }}
+          NINEROUTER_MODEL: ${{ vars.NINEROUTER_MODEL || 'anthropic/claude-sonnet-4-20250514' }}
           WAKE_MESSAGE: hi
           MAX_TOKENS: '8'
         run: node wake.js
